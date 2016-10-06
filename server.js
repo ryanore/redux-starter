@@ -3,21 +3,22 @@ var express = require('express');
 var app = express();
 var port = process.env.PORT || 4000;
 var webpackConfig = require('./webpack.config');
+var webpackHotMiddleware = require("webpack-hot-middleware");
+var webpackDevMiddleware = require("webpack-dev-middleware");
 
 (function() {
 
   var webpack = require('webpack');
   var compiler = webpack(webpackConfig);
 
-  app.use(require("webpack-dev-middleware")(compiler, {
+  app.use(webpackDevMiddleware(compiler, {
     noInfo: true,
     publicPath: webpackConfig.output.publicPath
   }));
 
+  app.use(webpackHotMiddleware(compiler));
+
   app.use(express.static('static'));
-
-  app.use(require("webpack-hot-middleware")(compiler));
-
 
   app.get("*", function(req, res) {
     res.sendFile(__dirname + '/index.dev.html');
