@@ -14,20 +14,20 @@ var webpackConfig = require('./webpack.config');
     publicPath: webpackConfig.output.publicPath
   }));
 
+  app.use(express.static('static'));
+
   app.use(require("webpack-hot-middleware")(compiler));
+
+
+  app.get("*", function(req, res) {
+    res.sendFile(__dirname + '/index.dev.html');
+  });
+
+  app.listen(port, '0.0.0.0', function(err) {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    console.log('Listening at http://localhost: ' + port);
+  });
 })();
-
-
-app.get("/", function(req, res) {
-  res.sendFile(__dirname + '/index.dev.html');
-});
-
-
-app.listen(port, '0.0.0.0', function(err) {
-  if (err) {
-    console.log(err);
-    return;
-  }
-
-  console.log('Listening at http://localhost: ' + port);
-});

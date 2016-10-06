@@ -7,13 +7,14 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: {
     main: [
-      'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+      'webpack/hot/dev-server',
+      'webpack-hot-middleware/client',
       './src/index'
     ]
   },
   output: {
-    path: __dirname,
-    publicPath: '/static/',
+    path: '/',
+    publicPath: 'http://localhost:4000/assets',
     filename: 'bundle.js'
   },
   plugins: [
