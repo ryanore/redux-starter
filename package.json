@@ -40,7 +40,8 @@
     "sass-loader": "^4.0.2",
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.8.3",
-    "webpack-hot-middleware": "^2.12.2"
+    "webpack-hot-middleware": "^2.12.2",
+    "webpack-module-hot-accept": "^1.0.4"
   },
   "dependencies": {
     "babel-preset-stage-1": "^6.16.0",
@@ -50,6 +51,7 @@
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
     "react-router": "^4.0.0-alpha.4",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0"
   }
 }

@@ -1,5 +1,11 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
+import locationReducer from './location'
 
-export default combineReducers({
-  state: (state = {}) => state
-});
+export const makeRootReducer = () => {
+  return combineReducers({
+    location: locationReducer
+  })
+}
+
+
+export default makeRootReducer

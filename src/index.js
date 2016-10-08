@@ -1,14 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-
 import App from './components/app';
-import reducers from './reducers';
+import createStore from './store'
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const initialState = window.___INITIAL_STATE__
+
+const store = createStore(initialState)
+
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
+  <Provider store={store}>
     <App />
   </Provider>
   , document.querySelector('.container'));
+
+  if (module.hot) {
+    module.hot.accept();
+  }
