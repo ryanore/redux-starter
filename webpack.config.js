@@ -1,21 +1,19 @@
 var path = require('path');
 var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: {
     main: [
-      'webpack/hot/dev-server',
-      'webpack-hot-middleware/client',
+      'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
       './src/index'
     ]
   },
   output: {
-    path: '/',
-    publicPath: 'http://localhost:4000/assets',
-    filename: 'bundle.js'
+    path: path.join(__dirname, 'static'),
+    filename: 'bundle.js',
+    publicPath: '/assets/',
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
@@ -38,7 +36,9 @@ module.exports = {
   module: {
     loaders: [{
       test: /\.js$/,
-      loaders: ['babel'],
+      loaders: [
+        'babel'
+      ],
       exclude: /node_modules/
     },
     {
