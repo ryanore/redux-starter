@@ -6,7 +6,8 @@ import fooReducer from './red-foo'
 export const makeRootReducer = () => {
   return combineReducers({
     location: locationReducer,
-    session: authReducer
+    session: authReducer,
+    foo: fooReducer
   })
 }
 

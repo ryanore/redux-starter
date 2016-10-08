@@ -23,12 +23,12 @@ class Main extends Component {
       return (
         <div>
           <Header/>
-          {this.props.children}
+          <div>No routes yet.</div>
           <Footer />
         </div>
       )
     } else {
-      return (<div>Verifying</div>)
+      return (<div>Verifying Authentication</div>)
     }
   }
 }

@@ -8,9 +8,7 @@ const initialState = window.___INITIAL_STATE__
 
 ReactDOM.render(
   <Provider store={createStore(initialState)}>
-    <App>
-      <div>Child</div>
-    </App>
+    <App />
   </Provider>
   , document.querySelector('.container'))
 
