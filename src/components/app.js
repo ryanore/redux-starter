@@ -9,6 +9,9 @@ import ProtectedRoute from '../routes/protectedpage'
 import Forbidden from '../routes/error/error-403'
 import NoMatch from '../routes/error/error-404'
 
+const loggedIn = true
+
+
 /**
  * Main body of app: Not much more than a container
  */
@@ -22,7 +25,7 @@ class Main extends Component {
             <Match exactly pattern="/" component={Home} />
             <Match pattern="/about" component={About} />
             <Match pattern="/403" component={Forbidden} />
-            <AuthenticatedMatch pattern="/protected" component={ProtectedRoute} />
+            <AuthenticatedMatch pattern="/protected" redirect="/403" component={ProtectedRoute} />
             <Miss component={NoMatch} />
           </div>
           < Footer />
