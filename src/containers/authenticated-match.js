@@ -6,7 +6,7 @@ const mapStateToProps = (state) => ({
   loggedIn: state.session.loggedIn
 })
 
-const AuthenticatedMatch = connect(mapStateToAppProps)((props) => (
+export default connect(mapStateToAppProps)((props) => {
   const {
     component: Component,
     redirect: redirect ='/login',
@@ -25,6 +25,4 @@ const AuthenticatedMatch = connect(mapStateToAppProps)((props) => (
       )
     )}/>
   )
-}
-
-export default connect(mapStateToProps)(AuthenticatedMatch);
+})
