@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
-import App from './containers/app'
+import { BrowserRouter } from 'react-router'
+import App from './components/app'
 import createStore from './store'
 
 const initialState = window.___INITIAL_STATE__
