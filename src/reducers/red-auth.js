@@ -1,10 +1,10 @@
 const INITIAL_STATE = {
   user: null,
   access_token: null,
-  loggedIn: false,
+  loggedIn: true,
   isAuthenticating: false,
   statusText: null,
-  verified: false
+  verified: true
 };
 
 export default function AuthReducer(state = INITIAL_STATE, action) {
