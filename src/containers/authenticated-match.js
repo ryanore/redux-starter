@@ -6,7 +6,7 @@ const mapStateToProps = (state) => ({
   loggedIn: state.session.loggedIn
 })
 
-export default connect(mapStateToAppProps)((props) => {
+export default connect(mapStateToProps)((props) => {
   const {
     component: Component,
     redirect: redirect ='/login',
