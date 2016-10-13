@@ -1,14 +1,13 @@
 const INITIAL_STATE = {
   user: null,
   access_token: null,
-  loggedIn: true,
+  loggedIn: false,
   isAuthenticating: false,
   statusText: null,
-  verified: true
+  verified: false
 };
 
 export default function AuthReducer(state = INITIAL_STATE, action) {
-
   let payload = action.payload;
 
   switch (action.type) {

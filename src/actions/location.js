@@ -1,23 +1,15 @@
-//
-//  Constants
-//
-
 export const LOCATION_CHANGE = 'LOCATION_CHANGE'
 
-//
-//  Actions
-//
-
-export function locationChange (location = '/') {
-  return {
-    type    : LOCATION_CHANGE,
-    payload : location
-  }
+const defaultLocation =  {
+  pathname: '/',
+  search: '',
+  hash: '',
+  query: null
 }
 
-//
-//  Thunks
-//
-export const updateLocation = ({ dispatch }) => {
-  return (nextLocation) => dispatch(locationChange(nextLocation))
+export function locationChange (location) {
+  return {
+    type    : LOCATION_CHANGE,
+    location : location
+  }
 }
