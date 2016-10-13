@@ -1,3 +1,5 @@
+import { List, Map } from 'immutable';
+
 const INITIAL_STATE = {
   user: null,
   access_token: null,
