@@ -18,8 +18,8 @@ export default connect(mapStateToProps)((props) => {
       props.loggedIn ? (
         <Component {...props}/>
       ) : (
-        <Redirect to={{
-          pathname: redirect ,
+        <Redirect push={true} to={{
+          pathname: redirect,
           state: { from: props.location }
         }}/>
       )

@@ -7,12 +7,12 @@ import { resetPassword } from 'app/actions/act-auth';
 
 const Form = t.form.Form
 
-class LoginPage extends React.Component {
+class ResetPasswordPage extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      value: {email: 'ryan@ryanore.com', password: '123456'}
+      value: {email: 'ryan@ryanore.com'}
     };
   }
 
@@ -26,7 +26,7 @@ class LoginPage extends React.Component {
     const value = this.refs.form.getValue();
 
     if( value ){
-      this.props.logIn(this.state.username, this.state.password, this.props.next);
+      this.props.resetPassword(this.props.email);
     }
   }
 
@@ -68,4 +68,4 @@ const mapDispatchToProps = (dispatch) => (
   }, dispatch)
 )
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ResetPasswordPage);

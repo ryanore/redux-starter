@@ -9,6 +9,41 @@ export const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 export const LOGOUT_USER_SUCCESSFUL = 'LOGOUT_USER_SUCCESSFUL';
 export const USER_AUTH_VERIFIED = 'USER_AUTH_VERIFIED';
 
+export const RESET_PASSWORD = 'RESET_PASSWORD';
+export const RESET_PASSWORD_SUCCESS = 'RESET_PASSWORD_SUCCESS';
+export const RESET_PASSWORD_FAILURE = 'RESET_PASSWORD_FAILURE';
+export const RESET_PASSWORD_REQUEST = 'RESET_PASSWORD_REQUEST';
+
+/**
+ * Action : make request to API to reset password
+ * @param  {String} email User's associated email
+ * @return {promise} Object with message payload
+ */
+export function resetPassword(un, redirect = '/login') {
+  return (dispatch) => {
+    let request = fetch('http://localhost:3001/users/forgotpassword',{
+      method: 'post',
+      body: JSON.stringify({username: un}),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(res => res.json())
+    .then(json => {
+      dispatch(push(redirect));
+      return {
+        type: RESET_PASSWORD_SUCCESS
+      };
+    })
+    .catch(ex => {
+      return {
+        type: RESET_PASSWORD_FAILURE
+      };
+    });
+  };
+}
+
 /**
  * Login form submitted
  * @param  {String} un username
@@ -58,6 +93,7 @@ export function loginUserRequest() {
  * @return {Object}
  */
 export function loginUserSuccess(access_token) {
+  console.log('login success!');
   let decoded = jwtDecode(access_token);
   localStorage.setItem('access_token', access_token);
 
@@ -78,6 +114,7 @@ export function loginUserSuccess(access_token) {
  * @return {Object} error info
  */
 export function loginUserFailure(error) {
+  console.log('login fail');
   localStorage.removeItem('access_token');
   return {
     type: LOGIN_USER_FAILURE,
@@ -93,6 +130,7 @@ export function loginUserFailure(error) {
  * @return {Object} error info
  */
 export function userAuthVerified(validToken) {
+  console.log('verified!');
   if( typeof validToken !== 'string'  ){
     localStorage.removeItem('access_token');
   }
@@ -108,6 +146,7 @@ export function userAuthVerified(validToken) {
  * from localStorage
 */
 export function verifyUserToken() {
+  console.log('verifying...');
   let access_token = localStorage.getItem('access_token');
 
   return (dispatch) => {
@@ -138,6 +177,7 @@ export function verifyUserToken() {
  * @return {[type]} [description]
  */
 export function logout() {
+  console.log('logout');
   localStorage.removeItem('access_token');
   return {
     type: LOGOUT_USER_SUCCESSFUL
@@ -150,6 +190,7 @@ export function logout() {
  * @return {[type]} [description]
  */
 export function logOutUserRequest() {
+  console.log('logout requested');
   return (dispatch, state) => {
     dispatch(logout());
     // dispatch(push('/login'));

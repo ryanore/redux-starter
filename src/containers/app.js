@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import {connect} from 'react-redux';
-import { BrowserRouter, Match, Miss, Link, Redirect } from 'react-router'
+import { BrowserRouter, StaticRouter, Match, Miss, Link, Redirect } from 'react-router'
 import AuthenticatedMatch from '../containers/authenticated-match'
 import Header from '../components/app-header'
 import Footer from '../components/app-footer'
@@ -17,16 +17,7 @@ const mapStateToAppProps = (state) => ({
 })
 
 export default connect(mapStateToAppProps)((props) => (
-  <BrowserRouter
-    history={props.history}
-    location={props.location}
-    onPush={(location) => {
-      props.dispatch({
-        type: 'LOCATION_CHANGE',
-        location
-      })
-    }}
-    >
+  <BrowserRouter>
     <div>
       <Header />
       <div>
